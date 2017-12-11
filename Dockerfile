@@ -2,8 +2,8 @@
 # Based on a work at https://github.com/docker/docker.
 # ------------------------------------------------------------------------------
 # Pull base image.
-FROM kdelfour/supervisor-docker
-MAINTAINER Kevin Delfour <kevin@delfour.eu>
+FROM paveltk/supervisor-docker
+MAINTAINER Pavel Tkachenko
 
 # ------------------------------------------------------------------------------
 # Install base
@@ -13,7 +13,7 @@ RUN apt-get install -y build-essential g++ curl libssl-dev apache2-utils git lib
 # ------------------------------------------------------------------------------
 # Install Node.js
 RUN curl -sL https://deb.nodesource.com/setup | bash -
-RUN apt-get install -y nodejs
+RUN apt-get install -y nodejs mc
     
 # ------------------------------------------------------------------------------
 # Install Cloud9
