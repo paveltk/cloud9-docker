@@ -2,7 +2,7 @@
 # Based on a work at https://github.com/docker/docker.
 # ------------------------------------------------------------------------------
 # Pull base image.
-FROM paveltk/supervisor-docker
+FROM ubuntu
 MAINTAINER Pavel Tkachenko
 
 # ------------------------------------------------------------------------------
@@ -14,6 +14,7 @@ RUN apt-get install -y build-essential g++ curl libssl-dev apache2-utils git lib
 # Install Node.js
 RUN curl -sL https://deb.nodesource.com/setup | bash -
 RUN apt-get install -y nodejs mc
+RUN ln -s /usr/bin/nodejs /usr/bin/node
     
 # ------------------------------------------------------------------------------
 # Install Cloud9
@@ -42,5 +43,5 @@ EXPOSE 80
 EXPOSE 3000
 
 # ------------------------------------------------------------------------------
-# Start supervisor, define default command.
-CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+# Start cloud9, define default command.
+CMD node server.js --port 80 -w /workspace --listen 0.0.0.0
